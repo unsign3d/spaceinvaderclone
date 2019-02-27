@@ -1,0 +1,35 @@
+{
+  "name": "parallax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unsign3d/webpong/issues"
+  },
+  "homepage": "https://github.com/unsign3d/webpong#readme",
+  "dependencies": {
+    "pixi.js": "^4.8.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "jest": "^24.1.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
