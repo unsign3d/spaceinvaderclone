@@ -1,9 +1,11 @@
 import { Sprite, loader } from 'pixi.js'
 import keyboard from '../utils/keyboard'
+import Projectile from './projectile'
 
 const spriteHeight = 32
 const spriteWidth = 32
 const padding = 16
+
 export default class Player {
   constructor (app) {
     this.app = app
@@ -11,6 +13,7 @@ export default class Player {
     this.leftArrow = keyboard("ArrowLeft")
     this.rightArrow = keyboard("ArrowRight")
     this.arrowUp = keyboard("ArrowUp")
+    this.projectile = new Projectile(this.app)
   }
 
   init = () => {
@@ -19,7 +22,7 @@ export default class Player {
     this.sprite.x = this.app.screen.width / 2 - spriteWidth / 2
     this.sprite.y = this.app.screen.height - spriteHeight - padding
     this.app.stage.addChild(this.sprite);
-
+    this.projectile.init()
     this.sprite.vx = 0
     this.sprite.vy = 0
     this.bindKeys()
@@ -43,7 +46,8 @@ export default class Player {
     }
 
     this.arrowUp.press = () => {
-      console.log('pew pew')
+      if(this.projectile.drawn) { return }
+      this.projectile.drawProjectile(this.sprite.x + 13,this.sprite.y-padding, 5)
     }
   }
 

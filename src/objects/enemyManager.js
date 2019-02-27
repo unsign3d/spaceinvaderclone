@@ -1,4 +1,5 @@
-import {default as Ship, shipColors} from './ship'
+import { default as Ship, shipColors } from './ship'
+import DetectCollision from '../utils/detectCollision'
 
 const COLS = 5
 const ROWS = 8
@@ -7,9 +8,10 @@ const padding = 16
 
 export default class EnemyManager {
   
-  constructor(app) {
+  constructor(app, player) {
     this.app = app
     this.ships = []
+    this.player = player
     this.speed = 0.5
   }
 
@@ -30,10 +32,15 @@ export default class EnemyManager {
   }
 
   moveShips = () => {
-    this.ships.forEach(ship => {
+    this.ships.forEach((ship, i) => {
       const position = ship.move(this.speed, 0)
       if (position == padding || (position + ship.sprite.width) >= (this.app.screen.width - padding)) {
         this.speed = this.speed * -1
+      }
+      if (DetectCollision(ship.sprite, this.player.projectile.sprite)) {
+        this.player.projectile.resetSprite()
+        this.app.stage.removeChild(ship.sprite)
+        delete this.ships[i]
       }
     });
   }

@@ -10,6 +10,7 @@ export default class StageManager {
       "assets/img/red_ship.png",
       "assets/img/player.png",
       "assets/img/bg_1_1.png",
+      "assets/img/projectile.png"
     ]
   }
 

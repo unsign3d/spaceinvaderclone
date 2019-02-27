@@ -25,5 +25,6 @@ export default class Ship {
     this.sprite.x += this.sprite.vx
     return this.sprite.x
   }
+
 }
 
